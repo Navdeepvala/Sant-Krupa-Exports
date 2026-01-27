@@ -55,11 +55,11 @@ const WhyUs = () => {
             Why Choose Us
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 text-foreground">
-            Your Trusted Jaggery Partner
+            Your Trusted Agricultural products
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Experience the difference of working with a dedicated team committed to excellence
-            in every aspect of jaggery production and export.
+            in every aspect of agricultural products production and export.
           </p>
         </motion.div>
 
@@ -95,7 +95,7 @@ const WhyUs = () => {
             {[
               { value: "15+", label: "Countries Served" },
               { value: "500+", label: "Happy Clients" },
-              { value: "10+", label: "Years Experience" },
+              { value: "8+", label: "Years Experience" },
               { value: "100%", label: "Quality Assured" }
             ].map((stat, index) => (
               <motion.div

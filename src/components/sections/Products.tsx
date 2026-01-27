@@ -1,8 +1,10 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { Leaf, Package, Droplet, Grid3x3 } from "lucide-react";
+import { Leaf, Package, Droplet, Grid3x3, ArrowRight } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 const Products = () => {
   const ref = useRef(null);
@@ -18,21 +20,21 @@ const Products = () => {
     },
     {
       icon: Package,
-      title: "Powder Jaggery",
+      title: "Ghee",
       description: "Finely ground jaggery powder perfect for cooking, baking, and beverage preparation.",
       features: ["Easy to dissolve", "Versatile use", "Long shelf life"],
       color: "from-amber-500/20 to-orange-500/20"
     },
     {
       icon: Grid3x3,
-      title: "Cube Jaggery",
+      title: "Sesame Seed (Til)",
       description: "Convenient cube-shaped jaggery for portion control and easy storage.",
       features: ["Uniform size", "Portion control", "Premium quality"],
       color: "from-yellow-500/20 to-amber-500/20"
     },
     {
       icon: Droplet,
-      title: "Liquid Jaggery",
+      title: "Peanuts",
       description: "Ready-to-use liquid jaggery syrup ideal for food processing and manufacturing.",
       features: ["Ready to use", "Industrial grade", "Consistent quality"],
       color: "from-orange-500/20 to-red-500/20"
@@ -54,10 +56,10 @@ const Products = () => {
             Our Products
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 text-foreground">
-            Premium Jaggery Range
+            Premium organic agricultural products
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Discover our wide range of high-quality jaggery products, each crafted with care to
+            Discover our wide range of high-quality products, each crafted with care to
             meet international standards.
           </p>
         </motion.div>
@@ -93,6 +95,21 @@ const Products = () => {
             </motion.div>
           ))}
         </div>
+
+        {/* View All Products Link */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: 0.4, duration: 0.5 }}
+          className="text-center mt-12"
+        >
+          <Button asChild size="lg" variant="outline" className="group">
+            <Link to="/products">
+              View All Products
+              <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+            </Link>
+          </Button>
+        </motion.div>
 
         {/* CTA Section */}
         <motion.div

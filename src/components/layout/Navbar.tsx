@@ -17,11 +17,11 @@ const Navbar = () => {
   }, []);
 
   const navLinks = [
-    { name: "Home", href: "#home" },
-    { name: "About", href: "#about" },
-    { name: "Products", href: "#products" },
-    { name: "Why Us", href: "#why-us" },
-    { name: "Contact", href: "#contact" },
+    { name: "Home", href: "#home", isRouterLink: false },
+    { name: "About", href: "#about", isRouterLink: false },
+    { name: "Products", href: "/products", isRouterLink: true },
+    { name: "Why Us", href: "#why-us", isRouterLink: false },
+    { name: "Contact", href: "#contact", isRouterLink: false },
   ];
 
   return (
@@ -50,14 +50,25 @@ const Navbar = () => {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                className="text-foreground hover:text-primary transition-colors font-medium relative group"
-              >
-                {link.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full"></span>
-              </a>
+              link.isRouterLink ? (
+                <Link
+                  key={link.name}
+                  to={link.href}
+                  className="text-foreground hover:text-primary transition-colors font-medium relative group"
+                >
+                  {link.name}
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full"></span>
+                </Link>
+              ) : (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  className="text-foreground hover:text-primary transition-colors font-medium relative group"
+                >
+                  {link.name}
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full"></span>
+                </a>
+              )
             ))}
             <Button asChild>
               <a href="#contact">Get Quote</a>
@@ -83,14 +94,25 @@ const Navbar = () => {
           <div className="md:hidden py-4 animate-fade-in">
             <div className="flex flex-col space-y-4">
               {navLinks.map((link) => (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  className="text-foreground hover:text-primary transition-colors font-medium py-2"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  {link.name}
-                </a>
+                link.isRouterLink ? (
+                  <Link
+                    key={link.name}
+                    to={link.href}
+                    className="text-foreground hover:text-primary transition-colors font-medium py-2"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    {link.name}
+                  </Link>
+                ) : (
+                  <a
+                    key={link.name}
+                    href={link.href}
+                    className="text-foreground hover:text-primary transition-colors font-medium py-2"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    {link.name}
+                  </a>
+                )
               ))}
               <Button asChild className="w-full">
                 <a href="#contact" onClick={() => setIsMobileMenuOpen(false)}>

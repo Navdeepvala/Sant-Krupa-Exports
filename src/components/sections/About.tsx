@@ -50,16 +50,12 @@ const About = () => {
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 text-foreground">
               Bringing Nature's Sweetness to the World
             </h2>
+
             <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-              Sant Krupa Exports is a leading name in the jaggery export industry, dedicated to
-              delivering the highest quality organic jaggery products to markets across the globe.
-              With over a decade of experience, we've built strong relationships with farmers and
-              clients worldwide.
+              At Sant Krupa Exporters, we're passionate about sharing the taste of India's finest agricultural products with the world. With 8 years of expertise, we produce premium-quality jaggery, groundnut oil, ghee, honey, Sesame Seed (Til),and peanuts using organic products sourced from over 1,000 trusted farmers.
             </p>
             <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-              Our commitment to quality, sustainability, and customer satisfaction has made us a
-              trusted partner for businesses seeking premium natural sweeteners. We take pride in
-              preserving traditional methods while meeting modern quality standards.
+              Our state-of-the-art facilities, managed by a team of 250 skilled workers, ensure top-notch quality in every product. We're now expanding our sweet journey from India to the world - join us as we spread the goodness of natural, healthy products globally.
             </p>
 
             {/* Features Grid */}

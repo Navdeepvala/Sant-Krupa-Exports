@@ -40,10 +40,9 @@ const Footer = () => {
             <ul className="space-y-2">
               {[
                 "Organic Jaggery",
-                "Powder Jaggery",
-                "Cube Jaggery",
-                "Liquid Jaggery",
-                "Specialty Products"
+                "Ghee",
+                "Sesame Seed (Til)",
+                "Peanuts",
               ].map((product) => (
                 <li key={product}>
                   <span className="text-secondary-foreground/80 text-sm">{product}</span>

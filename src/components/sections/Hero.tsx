@@ -29,7 +29,7 @@ const Hero = () => {
       </div>
 
       <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="items-center">
           {/* Text Content */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -48,14 +48,12 @@ const Hero = () => {
             </motion.div>
 
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-              Export Excellence in{" "}
-              <span className="text-primary">Natural Jaggery</span>
+              Sant Krupa exports <br />
+              <span className="text-primary">Pure Tradition, Global Taste</span>
             </h1>
 
             <p className="text-lg sm:text-xl text-white/90 mb-8 leading-relaxed">
-              Sant Krupa Exports brings you the finest quality organic jaggery, sourced from
-              sustainable farms and delivered to markets worldwide. Experience the pure taste
-              of tradition.
+              We export premium agricultural products like jaggery, groundnut oil, ghee, honey, and peanuts, all produced in our own farm and manufacturing facility in Gujarat, guaranteeing quality and authenticity.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">
@@ -88,30 +86,6 @@ const Hero = () => {
                   <div className="text-sm text-white/80">{stat.label}</div>
                 </motion.div>
               ))}
-            </div>
-          </motion.div>
-
-          {/* Image/Illustration Side */}
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="relative hidden lg:block"
-          >
-            <div className="relative">
-              <motion.div
-                animate={{ y: [0, -10, 0] }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                className="relative z-10"
-              >
-                <div className="w-full h-96 bg-gradient-to-br from-primary/20 to-accent/20 rounded-3xl backdrop-blur-sm border border-white/20 flex items-center justify-center">
-                  <Leaf className="w-40 h-40 text-primary opacity-50" />
-                </div>
-              </motion.div>
-              
-              {/* Decorative elements */}
-              <div className="absolute -top-6 -right-6 w-72 h-72 bg-primary/10 rounded-full blur-3xl"></div>
-              <div className="absolute -bottom-6 -left-6 w-72 h-72 bg-accent/10 rounded-full blur-3xl"></div>
             </div>
           </motion.div>
         </div>
