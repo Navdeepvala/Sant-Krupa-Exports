@@ -11,6 +11,9 @@ const Navbar = () => {
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
+      if (window.scrollY > 20 && isMobileMenuOpen) {
+        setIsMobileMenuOpen(false);
+      }
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -26,9 +29,9 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? "bg-background/95 backdrop-blur-md shadow-lg"
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 overflow-x-hidden ${
+        isScrolled || isMobileMenuOpen
+          ? "bg-background shadow-lg"
           : "bg-transparent"
       }`}
     >
@@ -42,8 +45,8 @@ const Navbar = () => {
               className="h-14 w-14 object-contain transition-transform group-hover:scale-110"
             />
             <div className="hidden sm:block">
-              <span className="text-xl font-bold text-primary">Sant Krupa</span>
-              <span className="text-xl font-bold text-secondary ml-1">Exports</span>
+              <span className={`text-xl font-bold ${isScrolled || isMobileMenuOpen ? "text-primary" : "text-white"}`}>Sant Krupa</span>
+              <span className={`text-xl font-bold ${isScrolled || isMobileMenuOpen ? "text-secondary" : "text-white/90"} ml-1`}>Exports</span>
             </div>
           </Link>
 
@@ -54,7 +57,9 @@ const Navbar = () => {
                 <Link
                   key={link.name}
                   to={link.href}
-                  className="text-foreground hover:text-primary transition-colors font-medium relative group"
+                  className={`${
+                    isScrolled ? "text-foreground hover:text-primary" : "text-white hover:text-primary"
+                  } transition-colors font-medium relative group`}
                 >
                   {link.name}
                   <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full"></span>
@@ -63,14 +68,16 @@ const Navbar = () => {
                 <a
                   key={link.name}
                   href={link.href}
-                  className="text-foreground hover:text-primary transition-colors font-medium relative group"
+                  className={`${
+                    isScrolled ? "text-foreground hover:text-primary" : "text-white hover:text-primary"
+                  } transition-colors font-medium relative group`}
                 >
                   {link.name}
                   <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full"></span>
                 </a>
               )
             ))}
-            <Button asChild>
+            <Button asChild variant={isScrolled ? "default" : "secondary"}>
               <a href="#contact">Get Quote</a>
             </Button>
           </div>
@@ -82,17 +89,17 @@ const Navbar = () => {
             aria-label="Toggle menu"
           >
             {isMobileMenuOpen ? (
-              <X className="h-6 w-6 text-foreground" />
+              <X className={`h-6 w-6 ${isScrolled || isMobileMenuOpen ? "text-foreground" : "text-white"}`} />
             ) : (
-              <Menu className="h-6 w-6 text-foreground" />
+              <Menu className={`h-6 w-6 ${isScrolled ? "text-foreground" : "text-white"}`} />
             )}
           </button>
         </div>
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden py-4 animate-fade-in">
-            <div className="flex flex-col space-y-4">
+          <div className="md:hidden py-4 animate-fade-in bg-background shadow-xl rounded-b-2xl border-t">
+            <div className="flex flex-col space-y-4 px-4 pb-4">
               {navLinks.map((link) => (
                 link.isRouterLink ? (
                   <Link
