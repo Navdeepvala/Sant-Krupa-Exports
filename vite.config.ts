@@ -5,8 +5,8 @@ import path from 'path'
 
 // https://vite.dev/config/
 export default defineConfig({
-  // Base path for GitHub Pages - your repo name
-  base: '/Sant-Krupa-Exports/',
+  // Base path for GitHub Pages - relative path is safer with HashRouter
+  base: './',
   plugins: [
     react(),
     tailwindcss(),
