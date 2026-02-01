@@ -5,6 +5,8 @@ import path from 'path'
 
 // https://vite.dev/config/
 export default defineConfig({
+  // Base path for GitHub Pages - your repo name
+  base: '/Sant-Krupa-Exports/',
   plugins: [
     react(),
     tailwindcss(),
@@ -15,3 +17,4 @@ export default defineConfig({
     },
   },
 })
+
