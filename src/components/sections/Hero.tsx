@@ -28,7 +28,7 @@ const Hero = () => {
         </motion.div>
       </div>
 
-      <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8 pt-32">
+      <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-32">
         <div className="items-center">
           {/* Text Content */}
           <motion.div
