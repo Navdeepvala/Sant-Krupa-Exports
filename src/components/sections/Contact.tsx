@@ -49,7 +49,7 @@ const Contact = () => {
   ];
 
   return (
-    <section id="contact" className="py-20 bg-background overflow-hidden">
+    <section id="contact" className="py-20 bg-background overflow-hidden scroll-mt-20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
@@ -140,7 +140,7 @@ const Contact = () => {
                   required
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  placeholder="John Doe"
+                  placeholder="Kelvin Vadhel"
                   className="w-full"
                 />
               </div>
@@ -155,7 +155,7 @@ const Contact = () => {
                   required
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  placeholder="john@example.com"
+                  placeholder="kelvinvadhel@example.com"
                   className="w-full"
                 />
               </div>

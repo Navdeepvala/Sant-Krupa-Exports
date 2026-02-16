@@ -1,4 +1,5 @@
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState } from "react";
 import { Leaf, Package, Droplet, Grid3x3, Star, ArrowRight, Check } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -6,16 +7,27 @@ import { Link } from "react-router-dom";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 
+// Product Images
+import jaggeryImg from "@/assets/jaggery.jpeg";
+import gheeImg from "@/assets/ghee.jpeg";
+import sesameImg from "@/assets/til.jpeg";
+import groundnutOilImg from "@/assets/ground_nut_oil.jpeg";
+import fruitsImg from "@/assets/fruits.jpeg";
+import peanutsImg from "@/assets/oil.jpeg"; // Using oil.jpeg as placeholder for peanuts if better not available, or I'll just skip it for now. Actually jaggery_1 or til_1? 
+// Let's use oil.jpeg for Groundnut Oil and ground_nut_oil.jpeg for another if needed, but I'll stick to one for each.
+
 const ProductsPage = () => {
+  const [activeCategory, setActiveCategory] = useState("All Products");
+
   const products = [
     {
       icon: Leaf,
       title: "Organic Jaggery",
       description: "100% pure organic jaggery made from naturally grown sugarcane, rich in minerals and nutrients. Our jaggery is processed using traditional methods to retain its natural goodness.",
       features: ["Chemical-free", "Rich in iron", "Natural sweetener", "Traditional processing", "No preservatives"],
-      color: "from-green-500/20 to-emerald-500/20",
-      gradient: "from-green-500 to-emerald-600",
-      image: "/jaggery.jpg",
+      color: "from-amber-600/20 to-orange-600/20",
+      gradient: "from-amber-600 to-orange-700",
+      image: jaggeryImg,
       category: "Sweeteners"
     },
     {
@@ -23,9 +35,9 @@ const ProductsPage = () => {
       title: "Pure Desi Ghee",
       description: "Premium quality pure desi ghee made from fresh cream using traditional bilona method. Rich in vitamins A, D, E, and K with authentic aroma and taste.",
       features: ["Bilona method", "A2 cow milk", "Rich aroma", "No additives", "Lab tested"],
-      color: "from-amber-500/20 to-orange-500/20",
-      gradient: "from-amber-500 to-orange-600",
-      image: "/ghee.jpg",
+      color: "from-yellow-500/20 to-amber-500/20",
+      gradient: "from-yellow-500 to-amber-600",
+      image: gheeImg,
       category: "Dairy"
     },
     {
@@ -33,64 +45,48 @@ const ProductsPage = () => {
       title: "Sesame Seeds (Til)",
       description: "High-quality white and black sesame seeds, carefully cleaned and sorted. Perfect for oil extraction, cooking, and confectionery applications.",
       features: ["99% purity", "High oil content", "Premium quality", "Sorted & cleaned", "Export grade"],
-      color: "from-yellow-500/20 to-amber-500/20",
-      gradient: "from-yellow-500 to-amber-600",
-      image: "/sesame.jpg",
+      color: "from-gray-400/20 to-gray-600/20",
+      gradient: "from-gray-500 to-gray-700",
+      image: sesameImg,
       category: "Seeds & Grains"
     },
     {
       icon: Droplet,
-      title: "Premium Peanuts",
-      description: "Bold and Java peanuts sourced from the finest farms. Ideal for oil mills, confectionery, and direct consumption with consistent size and quality.",
-      features: ["Hand-picked", "High oil content", "Uniform size", "Fresh harvest", "Vacuum packed"],
-      color: "from-orange-500/20 to-red-500/20",
-      gradient: "from-orange-500 to-red-600",
-      image: "/peanuts.jpg",
-      category: "Nuts"
-    },
-    {
-      icon: Leaf,
-      title: "Cumin Seeds (Jeera)",
-      description: "Aromatic cumin seeds with strong flavor profile, perfect for culinary use and oil extraction. Known for their digestive benefits and rich taste.",
-      features: ["Strong aroma", "High volatile oil", "Machine cleaned", "Premium grade", "Sorted quality"],
-      color: "from-yellow-600/20 to-amber-600/20",
-      gradient: "from-yellow-600 to-amber-700",
-      image: "/cumin.jpg",
-      category: "Spices"
-    },
-    {
-      icon: Grid3x3,
-      title: "Fennel Seeds (Saunf)",
-      description: "Premium quality fennel seeds with sweet aromatic flavor. Used extensively in cooking, mouth fresheners, and traditional medicine preparations.",
-      features: ["Sweet aroma", "Natural green color", "Export quality", "Clean sorted", "Fresh stock"],
-      color: "from-teal-500/20 to-green-500/20",
-      gradient: "from-teal-500 to-green-600",
-      image: "/fennel.jpg",
-      category: "Spices"
-    },
-    {
-      icon: Package,
       title: "Groundnut Oil",
       description: "Cold-pressed groundnut oil extracted from premium peanuts. Perfect for cooking with high smoke point and rich nutty flavor.",
       features: ["Cold pressed", "No chemicals", "High smoke point", "Rich flavor", "Healthy cooking"],
       color: "from-yellow-400/20 to-orange-400/20",
       gradient: "from-yellow-400 to-orange-500",
-      image: "/groundnut-oil.jpg",
+      image: groundnutOilImg,
       category: "Oils"
     },
     {
-      icon: Droplet,
-      title: "Castor Seeds",
-      description: "High-quality castor seeds with excellent oil content. Widely used in industrial applications, pharmaceuticals, and cosmetic manufacturing.",
-      features: ["High oil content", "Industrial grade", "Cleaned & sorted", "Bulk available", "Consistent quality"],
-      color: "from-purple-500/20 to-indigo-500/20",
-      gradient: "from-purple-500 to-indigo-600",
-      image: "/castor.jpg",
-      category: "Industrial Seeds"
-    }
+      icon: Package,
+      title: "Premium Peanuts",
+      description: "Bold and Java peanuts sourced from the finest farms. Ideal for oil mills, confectionery, and direct consumption with consistent size and quality.",
+      features: ["Hand-picked", "High oil content", "Uniform size", "Fresh harvest", "Vacuum packed"],
+      color: "from-orange-500/20 to-red-500/20",
+      gradient: "from-orange-500 to-red-600",
+      image: peanutsImg,
+      category: "Nuts"
+    },
+    {
+      icon: Leaf,
+      title: "Fresh Fruits",
+      description: "Premium quality fresh fruits sourced directly from our farms in Gujarat. Naturally ripened and carefully packed to ensure maximum freshness and taste.",
+      features: ["Farm fresh", "Naturally ripened", "Carefully graded", "Export quality", "Pesticide free"],
+      color: "from-green-500/20 to-emerald-500/20",
+      gradient: "from-green-500 to-emerald-600",
+      image: fruitsImg,
+      category: "Fresh Produce"
+    },
   ];
 
-  const categories = [...new Set(products.map(p => p.category))];
+  const categories = ["All Products", ...new Set(products.map(p => p.category))];
+  
+  const filteredProducts = activeCategory === "All Products" 
+    ? products 
+    : products.filter(p => p.category === activeCategory);
 
   return (
     <div className="min-h-screen bg-background">
@@ -161,11 +157,14 @@ const ProductsPage = () => {
       <section className="py-8 border-y border-border/50 bg-muted/30 sticky top-20 z-40 backdrop-blur-md">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-wrap justify-center gap-3">
-            <Button variant="default" size="sm" className="rounded-full">
-              All Products
-            </Button>
             {categories.map((category) => (
-              <Button key={category} variant="outline" size="sm" className="rounded-full hover:bg-primary hover:text-primary-foreground transition-all">
+              <Button 
+                key={category} 
+                variant={activeCategory === category ? "default" : "outline"}
+                size="sm" 
+                className="rounded-full transition-all duration-300"
+                onClick={() => setActiveCategory(category)}
+              >
                 {category}
               </Button>
             ))}
@@ -176,57 +175,75 @@ const ProductsPage = () => {
       {/* Products Grid */}
       <section className="py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-            {products.map((product, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.05 * index, duration: 0.5 }}
-                className="group"
-              >
-                <Card className="h-full border-2 border-border/50 hover:border-primary/50 transition-all duration-500 overflow-hidden hover:shadow-2xl hover:shadow-primary/10">
-                  {/* Product Image Placeholder with Gradient */}
-                  <div className={`h-48 bg-gradient-to-br ${product.gradient} p-6 flex items-center justify-center relative overflow-hidden group-hover:scale-105 transition-transform duration-500`}>
-                    <div className="absolute inset-0 bg-white/10 backdrop-blur-[1px]" />
-                    <product.icon className="w-20 h-20 text-white relative z-10 drop-shadow-lg" />
+          <motion.div 
+            layout
+            className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8"
+          >
+            <AnimatePresence mode="popLayout">
+              {filteredProducts.map((product) => (
+                <motion.div
+                  key={product.title}
+                  layout
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.9 }}
+                  transition={{ duration: 0.3 }}
+                  className="group"
+                >
+                  <Card className="h-full border-2 border-border/50 hover:border-primary/50 transition-all duration-500 overflow-hidden hover:shadow-2xl hover:shadow-primary/10">
+                    {/* Product Image */}
+                    <div className={`h-64 relative overflow-hidden group-hover:scale-105 transition-transform duration-500`}>
+                      <img 
+                        src={product.image} 
+                        alt={product.title}
+                        className="w-full h-full object-cover"
+                      />
+                      <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors" />
+                      
+                      {/* Category Badge */}
+                      <span className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm text-foreground px-3 py-1 rounded-full text-xs font-semibold shadow-sm">
+                        {product.category}
+                      </span>
+                      
+                      {/* Icon Overlay (Small) */}
+                      <div className="absolute bottom-4 left-4 w-10 h-10 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center shadow-sm">
+                        <product.icon className="w-5 h-5 text-primary" />
+                      </div>
+                    </div>
                     
-                    {/* Category Badge */}
-                    <span className="absolute top-4 right-4 bg-white/90 text-foreground px-3 py-1 rounded-full text-xs font-medium">
-                      {product.category}
-                    </span>
-                  </div>
-                  
-                  <CardHeader className="pb-3">
-                    <CardTitle className="text-xl group-hover:text-primary transition-colors">
-                      {product.title}
-                    </CardTitle>
-                    <CardDescription className="text-sm leading-relaxed">
-                      {product.description}
-                    </CardDescription>
-                  </CardHeader>
-                  
-                  <CardContent className="space-y-4">
-                    {/* Features */}
-                    <ul className="space-y-2">
-                      {product.features.slice(0, 4).map((feature, idx) => (
-                        <li key={idx} className="flex items-center text-sm">
-                          <Check className="w-4 h-4 text-primary mr-2 flex-shrink-0" />
-                          <span className="text-muted-foreground">{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
+                    <CardHeader className="pb-3">
+                      <CardTitle className="text-xl group-hover:text-primary transition-colors">
+                        {product.title}
+                      </CardTitle>
+                      <CardDescription className="text-sm leading-relaxed">
+                        {product.description}
+                      </CardDescription>
+                    </CardHeader>
                     
-                    {/* Action Button */}
-                    <Button variant="outline" className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
-                      <span>Request Quote</span>
-                      <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-                    </Button>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
+                    <CardContent className="space-y-4">
+                      {/* Features */}
+                      <ul className="space-y-2">
+                        {product.features.slice(0, 4).map((feature, idx) => (
+                          <li key={idx} className="flex items-center text-sm">
+                            <Check className="w-4 h-4 text-primary mr-2 flex-shrink-0" />
+                            <span className="text-muted-foreground">{feature}</span>
+                          </li>
+                        ))}
+                      </ul>
+                      
+                      {/* Action Button */}
+                      <Button asChild variant="outline" className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
+                        <Link to="/#contact">
+                          <span>Request Quote</span>
+                          <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                        </Link>
+                      </Button>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              ))}
+            </AnimatePresence>
+          </motion.div>
         </div>
       </section>
 

@@ -1,8 +1,25 @@
+import { Link } from "react-router-dom";
 import { Mail, Phone, MapPin, Facebook, Twitter, Linkedin, Instagram } from "lucide-react";
 import logo from "@/assets/logo.png";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+
+  const quickLinks = [
+    { name: "Home", href: "/" },
+    { name: "About", href: "/#about" },
+    { name: "Products", href: "/products" },
+    { name: "Why Us", href: "/#why-us" },
+  ];
+
+  const productsList = [
+    "Organic Jaggery",
+    "Pure Desi Ghee",
+    "Sesame Seeds (Til)",
+    "Groundnut Oil",
+    "Premium Peanuts",
+    "Fresh Fruits"
+  ];
 
   return (
     <footer className="bg-secondary text-secondary-foreground">
@@ -13,7 +30,7 @@ const Footer = () => {
             <img src={logo} alt="Sant Krupa Exports" className="h-16 w-16 object-contain" />
             <h3 className="text-xl font-bold">Sant Krupa Exports</h3>
             <p className="text-secondary-foreground/80 text-sm">
-              Leading exporter of premium quality jaggery products to markets worldwide.
+              Leading exporter of premium quality agricultural products to markets worldwide.
             </p>
           </div>
 
@@ -21,14 +38,14 @@ const Footer = () => {
           <div>
             <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
             <ul className="space-y-2">
-              {["Home", "About", "Products", "Why Us", "Contact"].map((link) => (
-                <li key={link}>
-                  <a
-                    href={`#${link.toLowerCase().replace(" ", "-")}`}
+              {quickLinks.map((link) => (
+                <li key={link.name}>
+                  <Link
+                    to={link.href}
                     className="text-secondary-foreground/80 hover:text-primary transition-colors text-sm"
                   >
-                    {link}
-                  </a>
+                    {link.name}
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -38,14 +55,14 @@ const Footer = () => {
           <div>
             <h4 className="text-lg font-semibold mb-4">Our Products</h4>
             <ul className="space-y-2">
-              {[
-                "Organic Jaggery",
-                "Ghee",
-                "Sesame Seed (Til)",
-                "Peanuts",
-              ].map((product) => (
+              {productsList.map((product) => (
                 <li key={product}>
-                  <span className="text-secondary-foreground/80 text-sm">{product}</span>
+                  <Link 
+                    to="/products"
+                    className="text-secondary-foreground/80 hover:text-primary transition-colors text-sm"
+                  >
+                    {product}
+                  </Link>
                 </li>
               ))}
             </ul>

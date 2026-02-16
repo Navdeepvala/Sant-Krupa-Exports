@@ -6,6 +6,12 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 
+// Product Images
+import jaggeryImg from "@/assets/jaggery.jpeg";
+import gheeImg from "@/assets/ghee.jpeg";
+import sesameImg from "@/assets/til.jpeg";
+import groundnutOilImg from "@/assets/ground_nut_oil.jpeg";
+
 const Products = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
@@ -14,35 +20,39 @@ const Products = () => {
     {
       icon: Leaf,
       title: "Organic Jaggery",
-      description: "100% pure organic jaggery made from naturally grown sugarcane, rich in minerals and nutrients.",
+      description: "100% pure organic jaggery made from naturally grown sugarcane, rich in minerals.",
       features: ["Chemical-free", "Rich in iron", "Natural sweetener"],
-      color: "from-green-500/20 to-emerald-500/20"
+      color: "from-amber-600/20 to-orange-600/20",
+      image: jaggeryImg
     },
     {
       icon: Package,
-      title: "Ghee",
-      description: "Finely ground jaggery powder perfect for cooking, baking, and beverage preparation.",
-      features: ["Easy to dissolve", "Versatile use", "Long shelf life"],
-      color: "from-amber-500/20 to-orange-500/20"
+      title: "Pure Desi Ghee",
+      description: "Premium quality pure desi ghee made using traditional bilona method.",
+      features: ["Bilona method", "A2 cow milk", "Rich aroma"],
+      color: "from-yellow-500/20 to-amber-500/20",
+      image: gheeImg
     },
     {
       icon: Grid3x3,
-      title: "Sesame Seed (Til)",
-      description: "Convenient cube-shaped jaggery for portion control and easy storage.",
-      features: ["Uniform size", "Portion control", "Premium quality"],
-      color: "from-yellow-500/20 to-amber-500/20"
+      title: "Sesame (Til)",
+      description: "High-quality sesame seeds, carefully cleaned and sorted for premium grade.",
+      features: ["99% purity", "High oil content", "Premium quality"],
+      color: "from-gray-400/20 to-gray-600/20",
+      image: sesameImg
     },
     {
       icon: Droplet,
-      title: "Peanuts",
-      description: "Ready-to-use liquid jaggery syrup ideal for food processing and manufacturing.",
-      features: ["Ready to use", "Industrial grade", "Consistent quality"],
-      color: "from-orange-500/20 to-red-500/20"
+      title: "Groundnut Oil",
+      description: "Cold-pressed groundnut oil extracted from premium hand-picked peanuts.",
+      features: ["Cold pressed", "No chemicals", "Rich flavor"],
+      color: "from-yellow-400/20 to-orange-400/20",
+      image: groundnutOilImg
     }
   ];
 
   return (
-    <section id="products" className="py-20 bg-background">
+    <section id="products" className="py-20 bg-background scroll-mt-20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
@@ -73,13 +83,21 @@ const Products = () => {
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.1 * index, duration: 0.5 }}
             >
-              <Card className="h-full border-2 hover:border-primary transition-all duration-300 group hover:shadow-xl">
-                <CardHeader>
-                  <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${product.color} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
-                    <product.icon className="w-8 h-8 text-primary" />
+              <Card className="h-full border-2 hover:border-primary transition-all duration-300 group hover:shadow-xl overflow-hidden">
+                <div className="h-48 relative overflow-hidden">
+                  <img 
+                    src={product.image} 
+                    alt={product.title}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors" />
+                  <div className={`absolute bottom-4 left-4 w-12 h-12 rounded-xl bg-white/90 backdrop-blur-sm flex items-center justify-center shadow-lg`}>
+                    <product.icon className="w-6 h-6 text-primary" />
                   </div>
+                </div>
+                <CardHeader>
                   <CardTitle className="text-xl mb-2">{product.title}</CardTitle>
-                  <CardDescription className="text-base">{product.description}</CardDescription>
+                  <CardDescription className="text-sm">{product.description}</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <ul className="space-y-2">
