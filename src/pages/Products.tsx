@@ -13,7 +13,7 @@ import gheeImg from "@/assets/ghee.jpeg";
 import sesameImg from "@/assets/til.jpeg";
 import groundnutOilImg from "@/assets/ground_nut_oil.jpeg";
 import fruitsImg from "@/assets/fruits.jpeg";
-import peanutsImg from "@/assets/oil.jpeg"; // Using oil.jpeg as placeholder for peanuts if better not available, or I'll just skip it for now. Actually jaggery_1 or til_1? 
+import peanutsImg from "@/assets/groundnut.jpeg"; // Using oil.jpeg as placeholder for peanuts if better not available, or I'll just skip it for now. Actually jaggery_1 or til_1? 
 // Let's use oil.jpeg for Groundnut Oil and ground_nut_oil.jpeg for another if needed, but I'll stick to one for each.
 
 const ProductsPage = () => {
