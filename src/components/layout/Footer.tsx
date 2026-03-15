@@ -18,7 +18,11 @@ const Footer = () => {
     "Sesame Seeds (Til)",
     "Groundnut Oil",
     "Premium Peanuts",
-    "Fresh Fruits"
+    "Fresh Fruits",
+    "Moong (Green Gram)",
+    "Urad (Black Gram)",
+    "Gehu (Wheat)",
+    "Fresh Vegetables"
   ];
 
   return (
