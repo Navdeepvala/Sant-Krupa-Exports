@@ -75,19 +75,19 @@ const Footer = () => {
               <li className="flex items-start space-x-3">
                 <Mail className="h-5 w-5 text-primary mt-0.5" />
                 <a
-                  href="mailto:info@santkrupaexports.com"
+                  href="mailto:santkrupaexporters@gmail.com"
                   className="text-secondary-foreground/80 hover:text-primary transition-colors text-sm"
                 >
-                  info@santkrupaexports.com
+                  santkrupaexporters@gmail.com
                 </a>
               </li>
               <li className="flex items-start space-x-3">
                 <Phone className="h-5 w-5 text-primary mt-0.5" />
                 <a
-                  href="tel:+919876543210"
+                  href="tel:+919023272288"
                   className="text-secondary-foreground/80 hover:text-primary transition-colors text-sm"
                 >
-                  +91 98765 43210
+                  +91 90232 72288
                 </a>
               </li>
               <li className="flex items-start space-x-3">
@@ -108,10 +108,8 @@ const Footer = () => {
             </p>
             <div className="flex space-x-4">
               {[
-                { icon: Facebook, href: "#" },
-                { icon: Twitter, href: "#" },
-                { icon: Linkedin, href: "#" },
-                { icon: Instagram, href: "#" }
+                { icon: Linkedin, href: "https://www.linkedin.com/in/sant-krupa-exports-35439a399?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" },
+                { icon: Instagram, href: "https://www.instagram.com/santkrupaexports?utm_source=qr&igsh=MTB0NGFzdGxxYnJxYQ==" }
               ].map(({ icon: Icon, href }, index) => (
                 <a
                   key={index}

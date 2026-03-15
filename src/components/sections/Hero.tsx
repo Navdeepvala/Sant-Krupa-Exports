@@ -49,7 +49,7 @@ const Hero = () => {
             </h1>
 
             <p className="text-lg sm:text-xl text-white/90 mb-8 leading-relaxed">
-              We export premium agricultural products like jaggery, groundnut oil, ghee, honey, peanuts, and fresh fruits, all produced in our own farm and manufacturing facility in Gujarat, guaranteeing quality and authenticity.
+              We export premium agricultural products such as jaggery, groundnut oil, ghee, honey, peanuts, fresh fruits, fresh vegetable and other agricultural products.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">

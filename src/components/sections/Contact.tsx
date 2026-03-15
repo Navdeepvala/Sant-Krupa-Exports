@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef, useState } from "react";
-import { Mail, Phone, MapPin, Send } from "lucide-react";
+import { Mail, Phone, MapPin, Send, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -15,7 +15,7 @@ const Contact = () => {
     name: "",
     email: "",
     phone: "",
-    message: ""
+    message: "",
   });
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -31,25 +31,28 @@ const Contact = () => {
     {
       icon: Mail,
       title: "Email Us",
-      content: "info@santkrupaexports.com",
-      href: "mailto:info@santkrupaexports.com"
+      content: "santkrupaexporters@gmail.com",
+      href: "mailto:santkrupaexporters@gmail.com",
     },
     {
       icon: Phone,
       title: "Call Us",
-      content: "+91 98765 43210",
-      href: "tel:+919876543210"
+      content: "+91 90232 72288",
+      href: "tel:+919023272288",
     },
     {
       icon: MapPin,
       title: "Visit Us",
       content: "Gujarat, India",
-      href: "#"
-    }
+      href: "#",
+    },
   ];
 
   return (
-    <section id="contact" className="py-20 bg-background overflow-hidden scroll-mt-20">
+    <section
+      id="contact"
+      className="py-20 bg-background overflow-hidden scroll-mt-20"
+    >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
@@ -66,8 +69,8 @@ const Contact = () => {
             Let's Start a Conversation
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Have questions about our products or want to place an order? We're here to help.
-            Reach out to us today.
+            Have questions about our products or want to place an order? We're
+            here to help. Reach out to us today.
           </p>
         </motion.div>
 
@@ -80,9 +83,12 @@ const Contact = () => {
             className="space-y-8"
           >
             <div>
-              <h3 className="text-2xl font-bold mb-4 text-foreground">Contact Information</h3>
+              <h3 className="text-2xl font-bold mb-4 text-foreground">
+                Contact Information
+              </h3>
               <p className="text-muted-foreground mb-8">
-                Fill out the form or reach out to us directly through any of the following methods.
+                Fill out the form or reach out to us directly through any of the
+                following methods.
               </p>
             </div>
 
@@ -100,7 +106,9 @@ const Contact = () => {
                     <info.icon className="w-6 h-6 text-primary group-hover:text-primary-foreground" />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-foreground mb-1">{info.title}</h4>
+                    <h4 className="font-semibold text-foreground mb-1">
+                      {info.title}
+                    </h4>
                     <p className="text-muted-foreground">{info.content}</p>
                   </div>
                 </motion.a>
@@ -114,12 +122,32 @@ const Contact = () => {
               transition={{ delay: 0.4, duration: 0.6 }}
               className="bg-gradient-to-br from-primary/10 to-accent/10 p-8 rounded-2xl border border-primary/20"
             >
-              <h4 className="font-bold text-lg mb-3 text-foreground">Business Hours</h4>
-              <div className="space-y-2 text-muted-foreground">
-                <p>Monday - Friday: 9:00 AM - 6:00 PM</p>
-                <p>Saturday: 9:00 AM - 2:00 PM</p>
-                <p>Sunday: Closed</p>
-              </div>
+              <section className="flex flex-col gap-4">
+                <div className="flex items-center gap-2">
+                  <h4 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">
+                    Availability
+                  </h4>
+                  <span className="flex items-center gap-1 rounded-full bg-emerald-500/10 px-2.5 py-0.5 text-xs font-medium text-emerald-600 dark:text-emerald-400">
+                    <span className="relative flex h-2 w-2">
+                      <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"></span>
+                      <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500"></span>
+                    </span>
+                    Open Now
+                  </span>
+                </div>
+
+                <div className="flex items-center gap-3 text-foreground">
+                  <Clock className="h-5 w-5 text-primary" />
+                  <div className="flex flex-col">
+                    <span className="text-lg font-medium leading-tight">
+                      24/7 Operations
+                    </span>
+                    <span className="text-sm text-muted-foreground">
+                      Monday – Sunday
+                    </span>
+                  </div>
+                </div>
+              </section>
             </motion.div>
           </motion.div>
 
@@ -129,9 +157,15 @@ const Contact = () => {
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <form onSubmit={handleSubmit} className="bg-card p-8 rounded-2xl shadow-xl border border-border space-y-6">
+            <form
+              onSubmit={handleSubmit}
+              className="bg-card p-8 rounded-2xl shadow-xl border border-border space-y-6"
+            >
               <div>
-                <label htmlFor="name" className="block text-sm font-medium mb-2 text-foreground">
+                <label
+                  htmlFor="name"
+                  className="block text-sm font-medium mb-2 text-foreground"
+                >
                   Full Name *
                 </label>
                 <Input
@@ -139,14 +173,19 @@ const Contact = () => {
                   type="text"
                   required
                   value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  onChange={(e) =>
+                    setFormData({ ...formData, name: e.target.value })
+                  }
                   placeholder="Kelvin Vadhel"
                   className="w-full"
                 />
               </div>
 
               <div>
-                <label htmlFor="email" className="block text-sm font-medium mb-2 text-foreground">
+                <label
+                  htmlFor="email"
+                  className="block text-sm font-medium mb-2 text-foreground"
+                >
                   Email Address *
                 </label>
                 <Input
@@ -154,35 +193,47 @@ const Contact = () => {
                   type="email"
                   required
                   value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  onChange={(e) =>
+                    setFormData({ ...formData, email: e.target.value })
+                  }
                   placeholder="kelvinvadhel@example.com"
                   className="w-full"
                 />
               </div>
 
               <div>
-                <label htmlFor="phone" className="block text-sm font-medium mb-2 text-foreground">
+                <label
+                  htmlFor="phone"
+                  className="block text-sm font-medium mb-2 text-foreground"
+                >
                   Phone Number
                 </label>
                 <Input
                   id="phone"
                   type="tel"
                   value={formData.phone}
-                  onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                  placeholder="+91 98765 43210"
+                  onChange={(e) =>
+                    setFormData({ ...formData, phone: e.target.value })
+                  }
+                  placeholder="+91 90232 72288"
                   className="w-full"
                 />
               </div>
 
               <div>
-                <label htmlFor="message" className="block text-sm font-medium mb-2 text-foreground">
+                <label
+                  htmlFor="message"
+                  className="block text-sm font-medium mb-2 text-foreground"
+                >
                   Your Message *
                 </label>
                 <Textarea
                   id="message"
                   required
                   value={formData.message}
-                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                  onChange={(e) =>
+                    setFormData({ ...formData, message: e.target.value })
+                  }
                   placeholder="Tell us about your requirements..."
                   className="w-full min-h-[150px]"
                 />
