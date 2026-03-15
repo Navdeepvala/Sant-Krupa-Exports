@@ -11,27 +11,30 @@ const About = () => {
     {
       icon: Target,
       title: "Quality First",
-      description: "We never compromise on the quality of our products, ensuring premium jaggery every time."
+      description:
+        "We never compromise on the quality of our products, ensuring premium agricultural products every time.",
     },
     {
       icon: Heart,
       title: "Sustainability",
-      description: "Committed to eco-friendly practices and supporting sustainable farming communities."
+      description:
+        "Committed to eco-friendly practices and supporting sustainable farming communities.",
     },
     {
       icon: Shield,
       title: "Reliability",
-      description: "Trusted by clients worldwide for consistent quality and timely deliveries."
-    }
+      description:
+        "Trusted by clients worldwide for consistent quality and timely deliveries.",
+    },
   ];
 
   const features = [
-    "100% Pure & Organic Jaggery",
+    "100% Pure & Organic Agricultural Products",
     "No Chemical Processing",
     "Traditional Production Methods",
     "Certified Quality Standards",
     "Sustainable Sourcing",
-    "Global Export Experience"
+    "Global Export Experience",
   ];
 
   return (
@@ -52,10 +55,18 @@ const About = () => {
             </h2>
 
             <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-              At Sant Krupa Exporters, we're passionate about sharing the taste of India's finest agricultural products with the world. With 8 years of expertise, we produce premium-quality jaggery, groundnut oil, ghee, honey, Sesame Seed (Til),and peanuts using organic products sourced from over 1,000 trusted farmers.
+              At Sant Krupa Exporters, we're passionate about sharing the taste
+              of India's finest agricultural products with the world. With 8
+              years of expertise, we produce premium-quality jaggery, groundnut
+              oil, ghee, honey, Sesame Seed (Til), peanuts and other
+              agricultural products using organic products sourced from over
+              1,000 trusted farmers.
             </p>
             <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-              Our state-of-the-art facilities, managed by a team of 250 skilled workers, ensure top-notch quality in every product. We're now expanding our sweet journey from India to the world - join us as we spread the goodness of natural, healthy products globally.
+              Our state-of-the-art facilities, managed by a team of 250 skilled
+              workers, ensure top-notch quality in every product. We're now
+              expanding our sweet journey from India to the world - join us as
+              we spread the goodness of natural, healthy products globally.
             </p>
 
             {/* Features Grid */}
@@ -69,7 +80,9 @@ const About = () => {
                   className="flex items-start space-x-2"
                 >
                   <CheckCircle className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                  <span className="text-sm font-medium text-foreground">{feature}</span>
+                  <span className="text-sm font-medium text-foreground">
+                    {feature}
+                  </span>
                 </motion.div>
               ))}
             </div>
@@ -95,7 +108,9 @@ const About = () => {
                     <value.icon className="w-6 h-6 text-primary group-hover:text-primary-foreground" />
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-xl font-bold mb-2 text-foreground">{value.title}</h3>
+                    <h3 className="text-xl font-bold mb-2 text-foreground">
+                      {value.title}
+                    </h3>
                     <p className="text-muted-foreground">{value.description}</p>
                   </div>
                 </div>
