@@ -1,5 +1,13 @@
 import { Link } from "react-router-dom";
-import { Mail, Phone, MapPin, Facebook, Twitter, Linkedin, Instagram } from "lucide-react";
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Facebook,
+  Twitter,
+  Linkedin,
+  Instagram,
+} from "lucide-react";
 import logo from "@/assets/logo.png";
 
 const Footer = () => {
@@ -22,7 +30,7 @@ const Footer = () => {
     "Moong (Green Gram)",
     "Urad (Black Gram)",
     "Gehu (Wheat)",
-    "Fresh Vegetables"
+    "Fresh Vegetables",
   ];
 
   return (
@@ -31,10 +39,15 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
           <div className="space-y-4">
-            <img src={logo} alt="Sant Krupa Exports" className="h-16 w-16 object-contain" />
+            <img
+              src={logo}
+              alt="Sant Krupa Exports"
+              className="h-16 w-16 object-contain"
+            />
             <h3 className="text-xl font-bold">Sant Krupa Exports</h3>
             <p className="text-secondary-foreground/80 text-sm">
-              Leading exporter of premium quality agricultural products to markets worldwide.
+              Leading exporter of premium quality agricultural products to
+              markets worldwide.
             </p>
           </div>
 
@@ -61,7 +74,7 @@ const Footer = () => {
             <ul className="space-y-2">
               {productsList.map((product) => (
                 <li key={product}>
-                  <Link 
+                  <Link
                     to="/products"
                     className="text-secondary-foreground/80 hover:text-primary transition-colors text-sm"
                   >
@@ -112,8 +125,14 @@ const Footer = () => {
             </p>
             <div className="flex space-x-4">
               {[
-                { icon: Linkedin, href: "https://www.linkedin.com/in/sant-krupa-exports-35439a399?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" },
-                { icon: Instagram, href: "https://www.instagram.com/santkrupaexports?utm_source=qr&igsh=MTB0NGFzdGxxYnJxYQ==" }
+                {
+                  icon: Linkedin,
+                  href: "https://www.linkedin.com/in/sant-krupa-exports-35439a399?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+                },
+                {
+                  icon: Instagram,
+                  href: "https://www.instagram.com/santkrupaexports?utm_source=qr&igsh=MTB0NGFzdGxxYnJxYQ==",
+                },
               ].map(({ icon: Icon, href }, index) => (
                 <a
                   key={index}
@@ -133,4 +152,3 @@ const Footer = () => {
 };
 
 export default Footer;
-
